@@ -1,0 +1,65 @@
+[columns]
+date = false
+target = false
+dimensions = false
+regressors = false
+
+[dataprep]
+date_format = "%Y-%m-%d"
+dimensions_agg = [ "Mean", "Sum", "Min", "Max",]
+remove_days = []
+remove_zeros = true
+remove_negative = true
+log_transform = false
+
+[model]
+seasonality_prior_scale = 10
+holidays_prior_scale = 10
+regressors_prior_scale = 10
+changepoint_prior_scale = 0.05
+growth = [ "linear", "logistic", "flat",]
+cap = 5.0
+floor = 0.0
+seasonality_mode = [ "additive", "multiplicative",]
+changepoint_range = 0.8
+holidays_country = "FR"
+public_holidays = false
+school_holidays = false
+lockdown_events = []
+
+[horizon]
+s = 86400
+H = 96
+D = 30
+W = 10
+M = 6
+Q = 4
+Y = 3
+
+[split]
+CV = 5
+gap_train_valid = 1
+
+[validity]
+min_data_points_train = 30
+min_data_points_val = 1
+min_target_cardinality = 5
+max_cat_reg_cardinality = 5
+
+[style]
+colors = [ "#002244", "#ff0066", "#66cccc", "#ff9933", "#337788", "#429e79", "#474747", "#f7d126", "#ee5eab", "#b8b8b8",]
+color_axis = "#d62728"
+waterfall_digits = 2
+
+[global]
+seed = 42
+
+[metrics.default]
+selection = [ "MAPE", "RMSE", "SMAPE", "MAE",]
+
+[metrics.digits]
+MAPE = 4
+SMAPE = 4
+MSE = 1
+RMSE = 2
+MAE = 2

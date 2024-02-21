@@ -1,0 +1,62 @@
+[dates]
+train_start_date = 2011-01-29
+train_end_date = 2016-04-22
+val_start_date = 2016-04-23
+val_end_date = 2016-05-22
+forecast_horizon = 30
+forecast_start_date = "Timestamp('2016-05-23 00:00:00')"
+forecast_end_date = "Timestamp('2016-06-22 00:00:00')"
+forecast_freq = "D"
+
+[columns]
+date = "date"
+target = "sales"
+
+[filtering]
+cat_id = [ "FOODS", "HOBBIES", "HOUSEHOLD",]
+store_id = [ "CA_1", "CA_2",]
+agg = "Mean"
+
+[cleaning]
+del_days = []
+del_zeros = true
+del_negative = true
+log_transform = false
+
+[resampling]
+freq = "D"
+resample = false
+
+[actions]
+evaluate = true
+use_cv = false
+make_future_forecast = true
+
+[model_params.prior_scale]
+seasonality_prior_scale = 10
+holidays_prior_scale = 10
+changepoint_prior_scale = 0.05
+
+[model_params.holidays]
+country = "FR"
+public_holidays = false
+school_holidays = false
+lockdown_events = []
+
+[model_params.regressors]
+
+[model_params.other]
+growth = "linear"
+changepoint_range = 0.8
+
+[model_params.seasonalities.yearly]
+period = 365.25
+prophet_param = "auto"
+
+[model_params.seasonalities.monthly]
+period = 30.5
+prophet_param = false
+
+[model_params.seasonalities.weekly]
+period = 7
+prophet_param = "auto"
